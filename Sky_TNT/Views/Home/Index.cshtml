@@ -1,0 +1,189 @@
+﻿@model IEnumerable<bai5_Anh.Models.Images>
+@using PagedList
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row row-offcanvas row-offcanvas-right">
+
+    <div class="col-xs-12 col-sm-12">
+        <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="jumbotron">
+            <h1>@ViewBag.chao</h1>
+            <h2>Welcome To Sky TNT Gallery</h2>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-lg-4">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/spsp.jpg" />
+                    <div class="xam"></div>
+                    <div class="gradient"></div>
+                    <div class="hinhvuong"></div>
+                    <div class="chuto">
+                        <img src="~/Content/Images/icons8-running-50.png" />
+                    </div>
+                    <div class="chunho">Sport And Leisure</div>
+                </div>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/natures.jpg" />
+                    <div class="xam"></div>
+                    <div class="gradient"></div>
+                    <div class="hinhvuong"></div>
+                    <div class="chuto">
+                        <img src="~/Content/Images/icons8-organic-food-50.png" />
+                    </div>
+                    <div class="chunho">Nature And Enviroment</div>
+
+                </div>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/rm.jpg" />
+                    <div class="xam"></div>
+                    <div class="gradient"></div>
+                    <div class="hinhvuong"></div>
+                    <div class="chuto">
+                        <img src="~/Content/Images/icons8-time-machine-50.png" />
+                    </div>
+                    <div class="chunho">Hitory</div>
+
+                </div>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/cre.png" />
+                    <div class="xam"></div>
+                    <div class="gradient"></div>
+                    <div class="hinhvuong"></div>
+                    <div class="chuto">
+                        <img src="~/Content/Images/icons8-innovation-50.png" />
+                    </div>
+                    <div class="chunho">Creative Arts And Media</div>
+
+                </div>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/sc.png" />
+                    <div class="xam"></div>
+                    <div class="gradient"></div>
+                    <div class="hinhvuong"></div>
+                    <div class="chuto">
+                        <img src="~/Content/Images/icons8-screenshot-50.png" />
+                    </div>
+                    <div class="chunho">Science And Math And Technology</div>
+                </div>
+            </div><!--/.col-xs-6.col-lg-4-->
+            <div class="col-xs-6 col-lg-4">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/trvl.jpg" />
+                    <div class="xam"></div>
+                    <div class="gradient"></div>
+                    <div class="hinhvuong"></div>
+                    <div class="chuto">
+                        <img src="~/Content/Images/icons8-beach-50.png" />
+                    </div>
+                    <div class="chunho">Travel</div>
+                </div>
+            </div><!--/.col-xs-6.col-lg-4-->
+        </div>
+    </div><!--/.col-xs-12.col-sm-9-->
+
+
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <p class="pull-right visible-xs">
+                    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+                </p>
+                <div class="row r">
+                    @foreach (var item in Model)
+                    {
+                    <div class="col-xs-6 col-lg-4">
+                        <a id="fancybox-thumbs" class="thumbnail fcb" rel="fcbox" href="@Url.Content(item.ImagePath)" onclick="functionClickImage('@Url.Content(item.IdImages.ToString())')">
+                            <img src="@Url.Content(item.ImagePath)" />
+                        </a>
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">See Details</button>
+                        <div class="dropdown-menu">
+                            <h2>Title</h2>
+                            <p>@item.Title</p>
+                            <h2>Introduce</h2>
+                            <p>@item.Introduce</p>
+                        </div>
+                    </div><!--/.col-xs-6.col-lg-4-->
+                    }
+                </div><!--/row-->
+            </div><!--/.col-xs-12.col-sm-9-->
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+                <div class="list-group">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title" style="text-align:center; font:bold; color:mediumseagreen;">Top View</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="top1"> 
+                                <h1>Number 1</h1>
+                                <a class="thumbnail" href="@Url.Content(ViewBag.listimg[0].ImagePath)"><img src="@Url.Content(ViewBag.listimg[0].ImagePath)" /></a>
+                            </div>                     
+                            <div class="top2">
+                                <h1>Number 2</h1>
+                                <a class="thumbnail" href="@Url.Content(ViewBag.listimg[1].ImagePath)"><img src="@Url.Content(ViewBag.listimg[1].ImagePath)" /></a>
+                            </div>
+                            <div class="top3">
+                                <h1>Number 3</h1>
+                                <a class="thumbnail" href="@Url.Content(ViewBag.listimg[2].ImagePath)"><img src="@Url.Content(ViewBag.listimg[2].ImagePath)" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!--/.sidebar-offcanvas-->
+        </div><!--/row-->
+    </div>
+</div><!--/row-->
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { page = p }))
+@section Scripts{
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#fancybox-thumbs").fancybox({
+                helpers: {
+                    title: {
+                        type: 'over'
+                    }
+                }
+            });
+            $("a.thumbnail.fcb").fancybox({
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+            var availableTags = [
+                "sport and leisure", "nature and enviroment", "hitory", "creative arts and media",
+                "science and math and technology", "travel"
+            ];
+
+            $("#autocomplete").autocomplete({
+                source: availableTags
+            });
+
+
+        });
+        function functionClickImage(id) {
+            var c = id;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateCount", "Images")',
+                data: { c: c },
+            });
+            console.log(c);
+        }
+    </script>
+}

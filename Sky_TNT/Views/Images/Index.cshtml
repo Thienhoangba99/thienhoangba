@@ -1,0 +1,86 @@
+﻿@model IEnumerable<bai5_Anh.Models.Images>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <a href="@Url.Action("Index",new {sx = "NameGroup", page = Request["page"] })">
+                @Html.DisplayNameFor(model => model.Images_GroupImages.NameGroup)
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("Index",new {sx = "ImagePath", page = Request["page"] })">
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("Index",new {sx = "Title", page = Request["page"] })">
+                @Html.DisplayNameFor(model => model.Title)
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("Index",new {sx = "Introduce", page = Request["page"] })">
+                @Html.DisplayNameFor(model => model.Introduce)
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("Index",new {sx = "DateSubmit", page = Request["page"] })">
+                @Html.DisplayNameFor(model => model.DateSubmit)
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("Index",new { sx = "Email", page = Request["page"] })">
+                @Html.DisplayNameFor(model => model.Email)
+            </a>
+        </th>
+        <th>
+            <a href="@Url.Action("Index",new { sx = "CountView", page = Request["page"] })">
+                @Html.DisplayNameFor(model => model.CountView)
+            </a>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Images_GroupImages.NameGroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Introduce)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateSubmit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountView)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdImages }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdImages }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdImages })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { page = p, sx = Request["sx"] }))
